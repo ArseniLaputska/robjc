@@ -1,0 +1,7 @@
+[parse.expand]
+# A list of crate names that should be run through `cargo expand`
+# ...
+crates = ["objc_kvo_rust"]
+all_features = false
+default_features = true
+features = ["cbindgen"]

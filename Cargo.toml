@@ -1,0 +1,20 @@
+[package]
+name = "objc_kvo_rust"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["staticlib", "rlib"]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+debug = false
+panic = "abort"
+strip = "symbols"
+
+[dependencies]
+objc2 = { version = "0.6.0", features = ["unstable-requires-macos", "unstable-static-class", "unstable-static-sel"] }
+cstr = "0.2.12"
+objc2-foundation = "0.3.0"
