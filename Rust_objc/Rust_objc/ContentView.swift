@@ -42,16 +42,27 @@ class MyClassObserver: NSObject, ObservableObject {
 }
 
 struct ContentView: View {
-    @StateObject var observer = MyClassObserver()
+//    @StateObject var observer = MyClassObserver()
+    // Создаем объект MyClass, регистрируя класс и запуская обновления.
+    // Обратите внимание, что это выполняется один раз.
+    let myClass: MyClass = {
+        registerMyClass()
+        let obj = createMyClass()
+        startUpdatingMyClass(obj)
+        return obj as! MyClass
+    }()
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Value: \(observer.value)")
-                .font(.largeTitle)
-            Text("Значение обновляется из Rust")
-                .foregroundColor(.gray)
-        }
-        .padding()
+//        VStack(spacing: 20) {
+//            Text("Value: \(observer.value)")
+//                .font(.largeTitle)
+//            Text("Значение обновляется из Rust")
+//                .foregroundColor(.gray)
+//        }
+//        .padding()
+        MyClassRepresentableView(myClass: myClass)
+            .frame(height: 200)
+            .padding()
     }
 }
 
